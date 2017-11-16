@@ -1,7 +1,7 @@
 {
-  "name": "mmall_admin_fe",
+  "name": "admin-fe",
   "version": "1.0.0",
-  "description": "admin.happymmall.com",
+  "description": "admin.zwtzmall.cn",
   "main": "index.js",
   "scripts": {
     "dev"     : "WEBPACK_ENV=dev webpack-dev-server --port 8086 --inline",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://git.oschina.net/happymmall/mmall_admin_fe.git"
+    "url": "https://github.com/zweitian/admin-fe"
   },
   "author": "Rosen",
   "license": "ISC",

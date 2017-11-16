@@ -2,7 +2,7 @@
 * @Author: Rosen
 * @Date:   2016-11-20 13:19:28
 * @Last Modified by:   ztian
-* @Last Modified time: 2017-11-16 21:46:03
+* @Last Modified time: 2017-11-16 23:26:27
 * 知识点：css单独打包、全局jquery引用、各种loader
 */
 
@@ -83,7 +83,7 @@ var config = {
         // html 加载
         new HtmlWebpackPlugin({
             filename        : 'view/index.html',
-            title           : 'MMall 后台管理系统',
+            title           : 'ZMall 后台管理系统',
             template        : './src/index.html',
             favicon         : './favicon.ico',
             inject          : true,
