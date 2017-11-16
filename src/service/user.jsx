@@ -31,10 +31,10 @@ export default class User{
             msg: '验证通过'
         }
     }
-    // 登录
+    // 后台管理员登录的接口
     login(userInfo){
         return mm.request({
-            url     : mm.getServerUrl('/manage/user/login.do'),
+            url     : mm.getServerUrl('/backend/session/user'),
             method  : 'POST',
             data    : {
                 username : userInfo.username || '',
@@ -42,11 +42,14 @@ export default class User{
             }
         });
     }
-    // 退出登录
+    // 后台管理员退出登录的接口
     logout(){
         return mm.request({
-            url     : mm.getServerUrl('/user/logout.do'),
+            url     : mm.getServerUrl('/session/user'),
             method  : 'POST',
+            data    :{
+                _method : 'DELETE'
+            }
         });
     }
 }

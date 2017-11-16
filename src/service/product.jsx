@@ -12,20 +12,19 @@ const _mm = new MMUtil();
 
 export default class Product{
     
-    // 获取商品信息
+    // 后台获取商品详细信息接口
     getProduct(productId){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/product/detail.do'),
-            data    : {
-                productId : productId || 0
-            }
+            url     : _mm.getServerUrl('/backend/products/'+productId),
+            method  : 'GET'
         });
     }
-    // 获取商品信息
+    // 后台获取商品列表的接口
     getProductList(listParam){
         if(listParam.listType == 'list'){
             return _mm.request({
-                url     : _mm.getServerUrl('/manage/product/list.do'),
+                url     : _mm.getServerUrl('/backend/products'),
+                method  : 'GET',
                 data    : {
                     pageNum : listParam.pageNum || 1
                 }
@@ -33,52 +32,59 @@ export default class Product{
         }
         else if(listParam.listType == 'search'){
             return _mm.request({
-                url     : _mm.getServerUrl('/manage/product/search.do'),
+                url     : _mm.getServerUrl('/backend/products/search'),
+                method  : 'GET',
                 data    : listParam
             });
         }
             
     }
-    // 获取商品信息
+    // 后台新增商品接口
     saveProduct(product){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/product/save.do'),
+            url     : _mm.getServerUrl('/backend/products'),
+            method  : "POST",
             data    : product
         });
     }
-    // 改变商品状态
+    // 后台改变商品状态的接口
     setProductStatus(productId, status){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/product/set_sale_status.do'),
+            url     : _mm.getServerUrl('/backend/products/ '+ productId + '/status'),
+            method  : 'POST',
             data    : {
-                productId   : productId,
+                _method     : 'PUT',
                 status      : status
             }
         });
     }
-    // 获取品类
+    // 获取品类的子节点(平级)的接口
     getCategory(parentCategoryId){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/category/get_category.do'),
+            url     : _mm.getServerUrl('/backend/category/parallel-children'),
+            method  : 'GET',
             data    : {
                 categoryId : parentCategoryId || 0
             }
         });
     }
-    // 新增品类
+    // 新增品类的接口
     saveCategory(category){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/category/add_category.do'),
+            url     : _mm.getServerUrl('/backend/category'),
+            method  :'POST',
             data    : {
                 parentId        : category.parentId    || 0,
                 categoryName    : category.categoryName  || ''
             }
         });
     }
-    // 更新品类名称
+    // 后台更新品类名称的接口
     updateCategoryName(category){
+        category._method = 'PUT';
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/category/set_category_name.do'),
+            url     : _mm.getServerUrl('/backend/category/name'),
+            method  :'POST',
             data    : category
         });
     }

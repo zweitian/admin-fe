@@ -32,7 +32,7 @@ const RichEditor = React.createClass({
             textarea: $(this.textarea),
             defaultValue: this.props.placeholder,
             upload:{
-                url             : _mm.getServerUrl('/manage/product/richtext_img_upload.do'),
+                url             : _mm.getServerUrl('/backend/ftpserver/products/rich-img'),
                 defaultImage    : '',
                 fileKey         :'upload_file'
             }

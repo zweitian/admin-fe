@@ -1,8 +1,8 @@
 /*
 * @Author: Rosen
 * @Date:   2016-11-20 13:19:28
-* @Last Modified by:   Rosen
-* @Last Modified time: 2017-06-15 09:38:12
+* @Last Modified by:   ztian
+* @Last Modified time: 2017-11-16 21:46:03
 * 知识点：css单独打包、全局jquery引用、各种loader
 */
 
@@ -13,7 +13,7 @@ var HtmlWebpackPlugin   = require('html-webpack-plugin');
 
 // 环境变量, dev, (test), online
 var WEBPACK_ENV            = process.env.WEBPACK_ENV || 'dev'; 
-
+console.log(WEBPACK_ENV);
 // webpack config
 var config = {
     entry:{
@@ -26,7 +26,7 @@ var config = {
     // path && publickPath
     output: {
         path        : __dirname + '/dist/',
-        publicPath  : WEBPACK_ENV === 'online' ? '//s.happymmall.com/admin-fe/dist/' : '/dist/',
+        publicPath  : WEBPACK_ENV === 'dev' ? '/dist/' : '//s.zwtzmall.cn/admin-fe/dist/',
         filename    : 'js/[name].js'
     },
     resolve: {

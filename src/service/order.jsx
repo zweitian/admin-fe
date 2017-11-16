@@ -16,15 +16,18 @@ export default class Order{
     getOrderList(listParam){
         if(listParam.listType == 'list'){
             return _mm.request({
-                url     : _mm.getServerUrl('/manage/order/list.do'),
+                url     : _mm.getServerUrl('/backend/orders'),
+                method  : 'GET',
                 data    : {
                     pageNum : listParam.pageNum || 1
                 }
             });
         }
+        //后台订单搜索列表的接口
         else if(listParam.listType == 'search'){
             return _mm.request({
-                url     : _mm.getServerUrl('/manage/order/search.do'),
+                url     : _mm.getServerUrl('/backend/orders/search'),
+                method  : 'GET',
                 data    : listParam
             });
         } 
@@ -32,18 +35,17 @@ export default class Order{
     // 获取订单详情
     getOrderDetail(orderNo){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/order/detail.do'),
-            data    : {
-                orderNo : orderNo || 0
-            }
+            url     : _mm.getServerUrl('/backend/orders/'+orderNo),
+            method  : 'GET'
         });
     }
-    // 发货
+    // 后台订单发货接口
     sendGoods(orderNo){
         return _mm.request({
-            url     : _mm.getServerUrl('/manage/order/send_goods.do'),
-            data    : {
-                orderNo : orderNo || 0
+            url     : _mm.getServerUrl('/backend/orders/'+ orderNo +'/shipment'),
+            method  : 'POST',
+            data    :{
+                _method:'PUT'
             }
         });
     }
